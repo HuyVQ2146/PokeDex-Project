@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+/*
+Dòng này trong CSS dùng để nhập một font chữ từ Google Fonts vào trang web. 
+Hãy phân tích từng phần:
+
+- @import: Lệnh này giúp bạn nhập một tệp CSS từ một URL khác vào file của mình.
+- url('https://fonts.googleapis.com/...'): Đây là liên kết đến Google Fonts, 
+    nơi chứa font Rubik với các độ dày từ 300 (mỏng) đến 900 (đậm).
+- display=swap: Giúp trình duyệt dùng tạm một font mặc định trong khi chờ 
+    font Rubik tải xong, giúp trang không bị trống chữ lúc ban đầu.
+*/
+
+:root { /*root giống như document trong <html>, còn cái này là đặt tên cho từng màu*/
+    /*
+    :root đại diện cho phần tử gốc của tài liệu, tương đương với <html>. 
+    Khi khai báo biến trong :root, các biến này sẽ có phạm vi toàn cục và có thể 
+        được sử dụng ở bất kỳ đâu trong CSS.
+    */
+
+    --clr-black: #1c1c1c;
+    --clr-gray: #ececec;
+    --clr-white: #f7f7f7;
+
+    --type-normal: #A8A878;
+    --type-fire: #F08030;
+    --type-water: #6890F0;
+    --type-grass: #78C850;
+    --type-electric: #F8D030;
+    --type-ice: #98D8D8;
+    --type-fighting: #C03028;
+    --type-poison: #A040A0;
+    --type-ground: #E0C068;
+    --type-flying: #A890F0;
+    --type-psychic: #F85888;
+    --type-bug: #A8B820;
+    --type-rock: #B8A038;
+    --type-ghost: #705898;
+    --type-dark: #705848;
+    --type-dragon: #7038F8;
+    --type-steel: #B8B8D0;
+    --type-fairy: #F0B6BC;
+}
+
+
+*{ /* chọn chọn tất cả các phần tử trong trang web */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+    Trong CSS, thuộc tính box-sizing: border-box; giúp thay đổi cách tính kích thước 
+    của phần tử. Cụ thể:
+
+    -Mặc định (content-box): Chiều rộng và chiều cao chỉ tính cho phần nội dung (content), 
+        không bao gồm phần padding và border.
+    -Khi dùng border-box: Chiều rộng và chiều cao sẽ bao gồm luôn cả padding và border. 
+        Điều này giúp dễ kiểm soát kích thước tổng thể của phần tử và tránh việc bố cục bị lệch ngoài ý muốn.
+    */
+
+    font-family: 'Rubik', sans-serif;
+}
+
+
+ul{
+    list-style-type: none;
+    /*list-style-type: Thuộc tính này quy định kiểu dấu đầu dòng (bullet) cho danh sách.
+    none: Khi đặt là none, nó sẽ loại bỏ dấu đầu dòng mặc định của danh sách.*/
+}
+
+
+button{
+    background-color: transparent; /* có nghĩa là làm cho nền trong suốt */
+    border: 0;
+    border-radius: 0;
+}
+
+
+body{
+    min-height: 100vh;
+    /*vh là viết tắt của "viewport height" 
+    — tức là chiều cao của cửa sổ trình duyệt theo tỷ lệ phần trăm.*/
+    background-color: var(--clr-gray);
+}
+
+header{
+    padding-block: 1rem;
+    /*padding-block dùng để thiết lập khoảng cách bên trong (padding) 
+    theo chiều dọc của một phần tử, tức là khoảng cách giữa nội dung và viền (border) 
+    ở phía trên và phía dưới.*/
+    box-shadow: 0 0 2rem -1rem rgb(0, 0, 0, 0.5);
+}
+
+.nav{
+    display: flex;
+    /*display: flex; dùng để biến một phần tử thành Flexbox Container 
+    — tức là một khung chứa linh hoạt, cho phép sắp xếp và căn chỉnh các 
+    phần tử con một cách dễ dàng.*/
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    /*Trong CSS Flexbox, thuộc tính align-items dùng để căn chỉnh các 
+    phần tử theo trục phụ (cross axis). Mặc định, trục phụ là trục dọc khi 
+    flex-direction: row; (đây là giá trị mặc định).
+    
+    align-items: flex-start; sẽ căn tất cả các phần tử con lên đầu của trục phụ.*/
+    padding-inline: 2rem; /* cách những cái xq 1 rem */
+
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* wrap có nghĩa là các phần tử con sẽ tự động xuống dòng nếu 
+    không đủ không gian để nằm trên cùng một hàng. */
+    gap: 0.5rem;
+}
+
+.btn-header{
+    background-color: var(--clr-gray);
+    padding:0.5rem;
+    border-radius: 100vmax;
+    /*
+    -vmax là một đơn vị đo lường trong CSS, đại diện cho kích thước 
+        lớn hơn giữa chiều rộng (vw) và chiều cao (vh) của cửa sổ trình duyệt.
+    -100vmax có nghĩa là lấy kích thước lớn nhất giữa chiều rộng và chiều cao, 
+        rồi nhân với 100%.
+    -Kết quả là phần tử sẽ có góc bo tròn rất lớn, làm cho nó trở thành 
+        hình tròn hoặc hình bầu dục tùy theo tỉ lệ chiều rộng và chiều cao.
+    */
+    cursor: pointer;
+    text-transform: uppercase; /* chuyển hết về vt hoa */
+    font-weight: 600;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.25);
+    transition: 0.2s;
+}
+
+.btn-header:hover{
+    transform: scale(1.1); /* phóng to 1.1 lần */
+    box-shadow: 0 0 2rem rgb(0, 0, 0, 0.25);
+}
+
+main{
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* margin: 0 auto; là một mẹo phổ biến trong CSS để căn giữa phần tử theo 
+    chiều ngang khi phần tử đó có chiều rộng cố định và là một block-level 
+    element (như <div>, <section>, <article>, v.v.). */
+}
+
+.pokemon-all{
+    display: grid;
+    grid-template-columns: 1fr;
+    /*
+    -display: grid; → Biến phần tử thành grid container.
+    -grid-template-columns: 1fr 1fr; → Tạo ra hai cột có kích thước bằng nhau, 
+        mỗi cột chiếm 1 phần (fraction) trong tổng không gian.
+    -fr là đơn vị đặc biệt trong CSS Grid, đại diện cho phần chia 
+        của không gian còn lại trong container.
+    -Với 1fr 1fr, tổng là 2 phần, mỗi cột chiếm 50% chiều rộng container.
+    -Nếu bạn viết 1fr 2fr, cột thứ hai sẽ chiếm gấp đôi cột thứ nhất (1:2).
+    */
+    gap: 1rem;
+}
+
+@media screen and (min-width: 450px){
+    /* @media screen and (min-width: 450px): Quy định các quy tắc CSS 
+    bên trong sẽ chỉ áp dụng khi độ rộng màn hình từ 450px trở lên.*/
+    .pokemon-all{
+        grid-template-columns: 1fr 1fr ;
+    }
+}
+
+@media screen and (min-width: 700px){
+    .pokemon-all{
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+}
+
+.pokemon{
+    border-radius: 1rem;
+    background-color: var(--clr-white);
+    box-shadow: 0  0 3rem -1rem rgb(0, 0, 0, 0.25);
+    padding-block: 1rem;
+    text-transform: uppercase;
+
+    position: relative; /* cnay để nhận thêm cái id của pokemon */
+    isolation: isolate;
+    /*Trong CSS, các phần tử được vẽ theo thứ tự "xếp chồng" (stacking context), 
+    giống như bạn xếp chồng các tấm thẻ lên nhau.
+
+    Bình thường, phần tử con sẽ "chia sẻ" thứ tự xếp chồng với phần tử cha.
+    Nhưng khi bạn dùng isolation: isolate;, nó tạo một ngữ cảnh xếp chồng mới 
+        cho phần tử đó, tách nó khỏi phần tử cha.*/
+    overflow: hidden;
+}
+
+.pokemon-id-back{
+    position: absolute;
+    top: 1rem;
+    /*
+    Trong CSS, thuộc tính top được dùng để dịch chuyển vị trí của một phần tử theo 
+    trục dọc (vertical), từ trên xuống. Tuy nhiên, nó chỉ hoạt động khi phần tử đó 
+    có một trong các thuộc tính position sau:
+        relative
+        absolute
+        fixed
+        sticky
+    Nếu không có position, thuộc tính top sẽ không có tác dụng.
+    */
+    left: 50%;
+    /*position: absolute; → Giúp .pokemon-id-back định vị tuyệt đối so 
+    với phần tử cha gần nhất có position: relative; (trong trường hợp này là 
+    .pokemon vì nó có position: relative;).*/
+    transform: translateX(-50%);
+    /*Kết quả: Giờ phần tử sẽ nằm chính giữa theo chiều ngang!*/
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--clr-gray);
+    z-index: -1;
+}   
+
+.pokemon-img{
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-img img{
+    width: 100%;
+    max-width: 6rem;
+}
+
+.pokemon-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.name-container{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-id{
+    background-color: var(--clr-gray);
+    padding: 0.25rem 0.5rem;
+    border-radius: 100vmax;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.pokemon-name{
+    font-size: 1.4rem;
+}
+
+.pokemon-types{
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* justify-content: center; là một thuộc tính trong CSS dùng để căn 
+    giữa các phần tử theo chiều ngang khi chúng nằm trong một flex container 
+    hoặc grid container. */
+}
+
+.type{
+    padding: 0.25rem 0.5rem;
+    border-radius: 100vmax;
+}
+
+.pokemon-stats{
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+}
+
+.stat{
+    background-color: var(--clr-gray);
+    padding: 0.25rem 0.5rem;
+    border-radius: 100vmax;
+}
+
+
+
+
+
+.normal{
+    background-color: var(--type-normal); /*var() là hàm để lấy giá trị của một biến CSS.*/
+    color: var(--clr-black);
+}
+
+.fire {
+    background-color: var(--type-fire);
+    color: var(--clr-black);
+}
+
+.water {
+    background-color: var(--type-water);
+    color: var(--clr-white);
+}
+
+.grass {
+    background-color: var(--type-grass);
+    color: var(--clr-black);
+}
+
+.electric {
+    background-color: var(--type-electric);
+    color: var(--clr-black);
+}
+
+.ice {
+    background-color: var(--type-ice);
+    color: var(--clr-black);
+}
+
+.fighting {
+    background-color: var(--type-fighting);
+    color: var(--clr-white);
+}
+
+.poison {
+    background-color: var(--type-poison);
+    color: var(--clr-white);
+}
+
+.ground {
+    background-color: var(--type-ground);
+    color: var(--clr-black);
+}
+
+.flying {
+    background-color: var(--type-flying);
+    color: var(--clr-black);
+}
+
+.psychic {
+    background-color: var(--type-psychic);
+    color: var(--clr-black);
+}
+
+.bug {
+    background-color: var(--type-bug);
+    color: var(--clr-black);
+}
+
+.rock {
+    background-color: var(--type-rock);
+    color: var(--clr-black);
+}
+
+.ghost {
+    background-color: var(--type-ghost);
+    color: var(--clr-white);
+}
+
+.dark {
+    background-color: var(--type-dark);
+    color: var(--clr-white);
+}
+
+.dragon {
+    background-color: var(--type-dragon);
+    color: var(--clr-white);
+}
+
+.steel {
+    background-color: var(--type-steel);
+    color: var(--clr-black);
+}
+
+.fairy {
+    background-color: var(--type-fairy);
+    color: var(--clr-black);
+}
