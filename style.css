@@ -152,6 +152,8 @@ main{
 
 .pokemon-all{
     display: grid;
+    /* Việc chiều cao các thẻ thay đổi theo là do CSS Grid sẽ mặc định căn chiều cao 
+    các hàng theo phần tử cao nhất trong hàng đó. */
     grid-template-columns: 1fr;
     /*
     -display: grid; → Biến phần tử thành grid container.

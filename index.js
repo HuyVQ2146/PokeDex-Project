@@ -2,7 +2,7 @@ const pokemonList = document.querySelector("#pokemonList");
 const btnHeader = document.querySelectorAll(".btn-header");
 let url = "https://pokeapi.co/api/v2/pokemon/";
 
-for(let i = 1; i <= 999; i++){
+for(let i = 1; i <= 1025; i++){
     fetch(url + i)
         .then(response => {
             if (!response.ok) {
@@ -60,7 +60,7 @@ ngay cả khi bạn nhấn vào phần tử con. */
 
     pokemonList.innerHTML = '';
         
-    for(let i = 1; i <= 999; i++){
+    for(let i = 1; i <= 1025; i++){
         fetch(url + i)
             .then(response => response.json())
             .then(data => {
