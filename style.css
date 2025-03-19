@@ -104,7 +104,7 @@ header{
     align-items: flex-start; sẽ căn tất cả các phần tử con lên đầu của trục phụ.*/
     padding-inline: 2rem; /* cách những cái xq 1 rem */
 
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -143,7 +143,7 @@ header{
 
 main{
     padding: 2rem;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 0 auto;
     /* margin: 0 auto; là một mẹo phổ biến trong CSS để căn giữa phần tử theo 
     chiều ngang khi phần tử đó có chiều rộng cố định và là một block-level 
@@ -165,7 +165,7 @@ main{
     gap: 1rem;
 }
 
-@media screen and (min-width: 450px){
+@media screen and (min-width: 500px){
     /* @media screen and (min-width: 450px): Quy định các quy tắc CSS 
     bên trong sẽ chỉ áp dụng khi độ rộng màn hình từ 450px trở lên.*/
     .pokemon-all{
@@ -173,11 +173,19 @@ main{
     }
 }
 
-@media screen and (min-width: 700px){
+@media screen and (min-width: 750px){
     .pokemon-all{
         grid-template-columns: 1fr 1fr 1fr ;
     }
 }
+
+@media screen and (min-width: 1000px){
+    .pokemon-all{
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+    }
+}
+
+
 
 .pokemon{
     border-radius: 1rem;
